@@ -5,14 +5,14 @@ services:
       - dokploy-network
     volumes:
       - ./404.html:/usr/share/nginx/html/index.html:ro
-labels:
-      - traefik.enable=true
-      - traefik.http.routers.catchall.rule=PathPrefix(`/`)
-      - traefik.http.routers.catchall.priority=1
-      - traefik.http.routers.catchall.entrypoints=web,websecure
-      - traefik.http.routers.catchall.tls=true
-      - traefik.http.services.catchall.loadbalancer.server.port=80
-      - traefik.docker.network=dokploy-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.catchall.rule=PathPrefix(`/`)"
+      - "traefik.http.routers.catchall.priority=1"
+      - "traefik.http.routers.catchall.entrypoints=web,websecure"
+      - "traefik.http.routers.catchall.tls=true"
+      - "traefik.http.services.catchall.loadbalancer.server.port=80"
+      - "traefik.docker.network=dokploy-network"
 
 networks:
   dokploy-network:
