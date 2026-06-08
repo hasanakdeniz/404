@@ -4,8 +4,7 @@ services:
     networks:
       - dokploy-network
     volumes:
-      # ÖNEMLİ: ./ yerine sunucudaki mutlak (tam) yolu yazın.
-      - /sunucudaki/tam/yol/404.html:/usr/share/nginx/html/index.html
+      - ./404.html:/usr/share/nginx/html/index.html
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.catchall.rule=HostRegexp(`{catchall:.*}`)"
