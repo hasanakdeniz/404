@@ -1,10 +1,18 @@
 services:
   custom-404:
     image: nginx:alpine
+    networks:
+      - dokploy-network
     volumes:
-      - ./404.html:/usr/share/nginx/html/index.html:ro
+      # ÖNEMLİ: ./ yerine sunucudaki mutlak (tam) yolu yazın.
+      - /sunucudaki/tam/yol/404.html:/usr/share/nginx/html/index.html:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.catchall.rule=HostRegexp(`{catchall:.*}`)"
       - "traefik.http.routers.catchall.priority=1"
+      - "traefik.http.routers.catchall.entrypoints=web,websecure"
       - "traefik.http.services.custom-404.loadbalancer.server.port=80"
+
+networks:
+  dokploy-network:
+    external: true
