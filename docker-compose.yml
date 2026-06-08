@@ -1,0 +1,10 @@
+services:
+  custom-404:
+    image: nginx:alpine
+    volumes:
+      - ./404.html:/usr/share/nginx/html/index.html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.catchall.rule=HostRegexp(`{catchall:.*}`)"
+      - "traefik.http.routers.catchall.priority=1"
+      - "traefik.http.services.custom-404.loadbalancer.server.port=80"
