@@ -4,7 +4,7 @@ services:
     networks:
       - dokploy-network
     volumes:
-      - ./tw.js:/usr/share/nginx/html/tw.js
+      - ./tw.js:/usr/share/nginx/html/tw.js:ro
       - ./404.html:/usr/share/nginx/html/index.html:ro
     labels:
       - "traefik.enable=true"
