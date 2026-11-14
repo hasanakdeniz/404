@@ -5,7 +5,7 @@ services:
       - dokploy-network
     volumes:
       - ./404.html:/usr/share/nginx/html/index.html:rw
-      - ./tw.js:/usr/share/nginx/html/tw.js:ro
+      - ./tw.js:/usr/share/nginx/html/tw.js:rw
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.catchall.rule=PathPrefix(`/`)"
